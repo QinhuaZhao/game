@@ -32,7 +32,7 @@ func (server *IpcServer) Connect() chan string {
 	session := make(chan string, 0)
 	go func(c chan string) {
 		for {
-			request := <- c
+			request := <-c
 			if request == "CLOSE" {
 				break
 			}
@@ -47,7 +47,7 @@ func (server *IpcServer) Connect() chan string {
 			resp := server.Handle(req.Method, req.Params)
 
 			b, err := json.Marshal(resp)
- 			c <- string(b) //返回结果
+			c <- string(b) //返回结果
 
 		}
 		fmt.Println("Session closed.")

@@ -3,7 +3,6 @@ package ipc
 import "testing"
 
 type EchoServer struct {
-
 }
 
 func (server *EchoServer) Handle(method, params string) *Response {
@@ -14,7 +13,7 @@ func (server *EchoServer) Name() string {
 	return "EchoServer"
 }
 
-func TestIpc(t *testing.T)  {
+func TestIpc(t *testing.T) {
 	server := NewIpcServer(&EchoServer{})
 
 	client1 := NewIpcClient(server)
