@@ -20,7 +20,7 @@ func (client *IpcClient) Call(method, params string) (resp *Response, err error)
 	}
 
 	client.conn <- string(b)
-	str := <- client.conn	//等待返回值k
+	str := <-client.conn //等待返回值k
 
 	var resp1 Response
 	err = json.Unmarshal([]byte(str), &resp1)

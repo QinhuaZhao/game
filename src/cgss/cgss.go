@@ -83,9 +83,9 @@ func ListPlayer(args []string) int {
 	ps, err := centerClient.ListPlayer("")
 	if err != nil {
 		fmt.Println("Failed.", err)
-	}else {
+	} else {
 		for i, v := range ps {
-			fmt.Println(fmt.Println(i + 1, ":", v))
+			fmt.Println(fmt.Println(i+1, ":", v))
 		}
 	}
 	return 0
@@ -104,14 +104,14 @@ func Send(args []string) int {
 
 func GetCommandHandlers() map[string]func(args []string) int {
 	return map[string]func(args []string) int{
-		"help": Help,
-		"h": Help,
-		"quit": Quit,
-		"q": Quit,
-		"login": Login,
-		"logout": Logout,
+		"help":       Help,
+		"h":          Help,
+		"quit":       Quit,
+		"q":          Quit,
+		"login":      Login,
+		"logout":     Logout,
 		"listplayer": ListPlayer,
-		"send": Send,
+		"send":       Send,
 	}
 }
 
@@ -136,14 +136,8 @@ func main() {
 			if ret != 0 {
 				break
 			}
-		}else {
+		} else {
 			fmt.Println("Unknow command: ", tokens[0])
 		}
 	}
 }
-
-
-
-
-
-

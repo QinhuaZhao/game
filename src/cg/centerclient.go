@@ -6,8 +6,6 @@ import (
 	"game/src/ipc"
 )
 
-
-
 type CenterClient struct {
 	*ipc.IpcClient
 }
@@ -26,7 +24,6 @@ func (client *CenterClient) AddPlayer(player *Player) error {
 	return err
 }
 
-
 func (client *CenterClient) RemovePlayer(name string) error {
 	ret, _ := client.Call("removeplayer", name)
 	if ret.Code == "200" {
@@ -34,7 +31,6 @@ func (client *CenterClient) RemovePlayer(name string) error {
 	}
 	return errors.New(ret.Code)
 }
-
 
 func (client *CenterClient) ListPlayer(params string) (ps []*Player, err error) {
 	resp, _ := client.Call("listplayer", params)
@@ -46,7 +42,6 @@ func (client *CenterClient) ListPlayer(params string) (ps []*Player, err error) 
 	err = json.Unmarshal([]byte(resp.Body), &ps)
 	return
 }
-
 
 func (client *CenterClient) Broadcast(message string) error {
 	m := &Message{Content: message}
@@ -61,4 +56,3 @@ func (client *CenterClient) Broadcast(message string) error {
 	}
 	return errors.New(resp.Code)
 }
-
